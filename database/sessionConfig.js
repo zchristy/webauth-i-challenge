@@ -1,9 +1,10 @@
 const session = require('express-session')
 const KnexSessionStore = require('connect-session-knex')(session)
 
+
 const sessionConfig = {
-  name: 'noodle', //by default it would be sid change for security
-  secret: 'keep it secret, keep it safe',
+  name: process.env.SESSION_NAME, //by default it would be sid change for security
+  secret: process.env.SESSION_SECRET,
   resave: false, // if there are no changes to the session dont save it
   saveUninitialized: true, // for GDPR compliance
   cookie: {
